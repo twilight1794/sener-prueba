@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: ${CONTRA_BD}
+  flask:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM python:alpine
+        ENV PYTHONDONTWRITEBYTECODE=1
+        ENV PYTHONUNBUFFERED=1
+        RUN apk update && apk upgrade && pip install Flask --no-cache-dir
+        WORKDIR /srv/src
+        EXPOSE 8000
+        CMD flask run --host=0.0.0.0
+    restart: always
+    volumes:
+      - "./src:/srv/src"
+    ports:
+      - 5000:5000
