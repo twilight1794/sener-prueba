@@ -22,6 +22,13 @@ services:
         CMD flask run --host=0.0.0.0
     restart: always
     volumes:
-      - "./src:/srv/src"
+      - "./src/servidor:/srv/src"
     ports:
       - 5000:5000
+  webserver:
+    image: lipanski/docker-static-website:latest
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - "./src/cliente:/home/static"
