@@ -1,10 +1,6 @@
 CREATE DATABASE IF NOT EXISTS sener;
 USE sener;
 
-CREATE TABLE IF NOT EXISTS meta (
-  ultima_act TIMESTAMP not null
-);
-
 CREATE TABLE IF NOT EXISTS ciudad (
   id int auto_increment,
   nombre varchar(50) not null,
@@ -26,7 +22,19 @@ CREATE TABLE IF NOT EXISTS tiempo (
   dato_tiempo timestamp,
   alba timestamp,
   ocaso timestamp,
-  primary key (id)
+  primary key (id),
+  foreign key (ciudad) references ciudad(id)
+);
+
+CREATE TABLE IF NOT EXISTS pronostico (
+  id int auto_increment,
+  ciudad int not null,
+  dato_tiempo timestamp,
+  tiempo_tipo int,
+  tiempo_icono varchar(5),
+  temperatura int,
+  pop int,
+  primary key (id),
   foreign key (ciudad) references ciudad(id)
 );
 

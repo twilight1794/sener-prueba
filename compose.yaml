@@ -4,6 +4,8 @@ services:
     restart: always
     environment:
       MARIADB_ROOT_PASSWORD: contra
+    volumes:
+      - "db.sql:/docker-entrypoint-initdb.d/db.sql"
     ports:
       - 3306:3306
   flask:
@@ -21,6 +23,8 @@ services:
         WORKDIR /srv/src
         CMD flask run --host=0.0.0.0
     restart: always
+    environment:
+      OWM_TOKEN: ${OWM_TOKEN}
     volumes:
       - "./src/servidor:/srv/src"
     ports:
