@@ -3,7 +3,7 @@ services:
     image: mariadb
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: ${CONTRA_BD}
+      MARIADB_ROOT_PASSWORD: contra
     ports:
       - 3306:3306
   flask:
@@ -29,6 +29,6 @@ services:
     image: lipanski/docker-static-website:latest
     restart: always
     ports:
-      - 3000:3000
+      - 3001:3000
     volumes:
       - "./src/cliente:/home/static"

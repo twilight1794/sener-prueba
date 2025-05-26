@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS ciudad (
 CREATE TABLE IF NOT EXISTS tiempo (
   id int auto_increment,
   ciudad int not null,
-  tiempo_tipo varchar(50),
-  tiempo_desc varchar(100),
+  tiempo_tipo int,
+  tiempo_icono varchar(5),
   temperatura int,
   sensacion int,
   temp_min int,
@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS tiempo (
   alba timestamp,
   ocaso timestamp,
   primary key (id)
+  foreign key (ciudad) references ciudad(id)
 );
 
 INSERT INTO ciudad (nombre, latitud, longitud) VALUES
@@ -40,3 +41,6 @@ INSERT INTO ciudad (nombre, latitud, longitud) VALUES
   ('Queretaro', 20588, -100388),
   ('Ciudad Juárez', 31668, -106420),
   ('Torreón', 25167, -103266);
+
+
+INSERT INTO tiempo (ciudad) SELECT id FROM ciudad;
