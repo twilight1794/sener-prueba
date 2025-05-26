@@ -20,7 +20,7 @@ except mariadb.Error as e:
     sys.exit(1)
 
 @app.route("/datos")
-def fun():
+def datos():
     obj = {}
     # Tiempo actual
     q1 = "select a.id, a.nombre, b.tiempo_tipo, b.tiempo_icono, b.temperatura, b.sensacion, b.temp_min, b.temp_max, b.humedad, b.dato_tiempo, b.alba, b.ocaso from ciudad as a inner join tiempo as b on a.id=b.ciudad"
@@ -28,18 +28,18 @@ def fun():
     res1 = cur.fetchall()
     for c1 in res1:
         obj[str(c1[0])] = {
-            nombre: c1[1],
-            tiempo_tipo: c1[2],
-            tiempo_icono: c1[3],
-            temperatura: c1[4],
-            sensacion: c1[5],
-            temp_min: c1[6],
-            temp_max: c1[7],
-            humedad: c1[8],
-            dato_tiempo: c1[9],
-            alba: c1[10],
-            ocaso: c1[11],
-            pronosticos: {}
+            "nombre": c1[1],
+            "tiempo_tipo": c1[2],
+            "tiempo_icono": c1[3],
+            "temperatura": c1[4],
+            "sensacion": c1[5],
+            "temp_min": c1[6],
+            "temp_max": c1[7],
+            "humedad": c1[8],
+            "dato_tiempo": c1[9],
+            "alba": c1[10],
+            "ocaso": c1[11],
+            "pronosticos": {}
         }
     # Pronósticos
     q2 = "select * from pronostico"
@@ -47,15 +47,15 @@ def fun():
     res2 = cur.fetchall()
     for c2 in res2:
         obj[str(c1[0])]["pronosticos"][str(c2[2])] = {
-            tiempo_tipo: c2[3],
-            tiempo_icono: c2[4],
-            temperatura: c2[5],
-            pop: c2[6]
+            "tiempo_tipo": c2[3],
+            "tiempo_icono": c2[4],
+            "temperatura": c2[5],
+            "pop": c2[6]
         }
     return obj
 
 @app.route("/actualizar")
-def fun():
+def actualizar():
     # Limpiar
     cur.execute("delete from pronostico")
     con.commit()

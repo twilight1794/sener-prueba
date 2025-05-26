@@ -5,7 +5,7 @@ services:
     environment:
       MARIADB_ROOT_PASSWORD: contra
     volumes:
-      - "db.sql:/docker-entrypoint-initdb.d/db.sql"
+      - "./db.sql:/docker-entrypoint-initdb.d/db.sql"
     ports:
       - 3306:3306
   flask:
@@ -18,7 +18,7 @@ services:
         RUN apk update && apk upgrade && \
             apk add --no-cache mariadb-connector-c && \
             apk add --no-cache --virtual .build-deps gcc musl-dev mariadb-connector-c-dev && \
-            pip install Flask mariadb --no-cache-dir && \
+            pip install Flask mariadb requests --no-cache-dir && \
             apk --purge del .build-deps
         WORKDIR /srv/src
         CMD flask run --host=0.0.0.0
