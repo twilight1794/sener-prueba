@@ -63,16 +63,18 @@ def actualizar():
     res = cur.fetchall()
     for c in res:
         # Tiempo actual
-        r1 = requests.get("https://api.openweathermap.org/data/2.5/weather?lat="+c[2]+"&lon="+c[3]+"&appid="+os.environ["OWM_TOKEN"])
+        r1 = requests.get("https://api.openweathermap.org/data/2.5/weather?lat="+str(c[2]/1000)+"&lon="+str(c[3]/1000)+"&appid="+os.environ["OWM_TOKEN"])
         j1 = r1.json()
-        q1 = "update tiempo set tiempo_tipo="+j1["weather"][0]["id"]+", tiempo_icono='"+j1["weather"][0]["icon"]+"', temperatura="+int((j1["main"]["temp"]-273.15)*100)+", sensacion="+int((j1["main"]["feels_like"]-273.15)*100)+", temp_min="+int((j1["main"]["temp_min"]-273.15)*100)+", temp_max="+int((j1["main"]["temp_max"]-273.15)*100)+", humedad="+int(j1["main"]["humidity"]*100)+", dato_tiempo="+j1["dt"]+", alba="+j["sys"]["sunrise"]+", ocaso="+j1["sys"]["sunset"]+" where ciudad = "+c[0]
+        print(j1)
+        q1 = "update tiempo set tiempo_tipo="+str(j1["weather"][0]["id"])+", tiempo_icono='"+j1["weather"][0]["icon"]+"', temperatura="+str(int((j1["main"]["temp"]-273.15)*1000))+", sensacion="+str(int((j1["main"]["feels_like"]-273.15)*1000))+", temp_min="+str(int((j1["main"]["temp_min"]-273.15)*1000))+", temp_max="+str(int((j1["main"]["temp_max"]-273.15)*1000))+", humedad="+str(int(j1["main"]["humidity"]*1000))+", dato_tiempo=FROM_UNIXTIME("+str(j1["dt"])+"), alba=FROM_UNIXTIME("+str(j1["sys"]["sunrise"])+"), ocaso=FROM_UNIXTIME("+str(j1["sys"]["sunset"])+") where ciudad = "+str(c[0])
         print(q1)
         cur.execute(q1)
         # Pronósticos
-        r2 = requests.get("https://api.openweathermap.org/data/2.5/forecast?lat="+c[2]+"&lon="+c[3]+"&appid="+os.environ["OWM_TOKEN"])
+        r2 = requests.get("https://api.openweathermap.org/data/2.5/forecast?lat="+str(c[2]/1000)+"&lon="+str(c[3]/1000)+"&appid="+os.environ["OWM_TOKEN"])
         j2 = r2.json()
+        print(j2)
         for l in j2["list"]:
-            q2 = "insert into pronostico(ciudad, dato_tiempo, tiempo_tipo, tiempo_icono, temperatura, pop) values ("+c[0]+","+l["dt"]+","+l["weather"][0]["id"]+",'"+l["weather"][0]["icon"]+"',"+int((l["main"]["temp"]-273.15)*100)+","+int(l["pop"]*100)+")"
+            q2 = "insert into pronostico(ciudad, dato_tiempo, tiempo_tipo, tiempo_icono, temperatura, pop) values ("+str(c[0])+",FROM_UNIXTIME("+str(l["dt"])+"),"+str(l["weather"][0]["id"])+",'"+l["weather"][0]["icon"]+"',"+str(int((l["main"]["temp"]-273.15)*1000))+","+str(int(l["pop"]*1000))+")"
             print(q2)
             cur.execute(q2)
         con.commit()

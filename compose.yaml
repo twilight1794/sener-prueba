@@ -23,6 +23,8 @@ services:
         WORKDIR /srv/src
         CMD flask run --host=0.0.0.0
     restart: always
+    depends_on:
+      - db
     environment:
       OWM_TOKEN: ${OWM_TOKEN}
     volumes:
