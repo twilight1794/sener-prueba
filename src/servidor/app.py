@@ -46,7 +46,7 @@ def datos():
     cur.execute(q2)
     res2 = cur.fetchall()
     for c2 in res2:
-        obj[str(c1[0])]["pronosticos"][str(c2[2])] = {
+        obj[str(c2[1])]["pronosticos"][str(c2[2])] = {
             "tiempo_tipo": c2[3],
             "tiempo_icono": c2[4],
             "temperatura": c2[5],
