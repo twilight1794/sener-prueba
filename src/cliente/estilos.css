@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: "Ubuntu", sans-serif;
+}
+h1 {
+  font-size: 1.5rem;
+}
+h1, h2 {
+  margin-bottom: 1rem;
+}
+#fecha {
+  margin-bottom: 2rem;
+}
+
+/* Escritorio */
+html {
+  background: #addaf0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: #212529;
+}
+body>:is(main, aside) {
+  background: #fafafa;
+  border-radius: 1rem;
+  filter: drop-shadow(1px 1px 2px);
+  padding: 1rem;
+}
+main>:nth-child(3) {
+  display: flex;
+  gap: 1rem;
+}
+main>:nth-child(3)>article {
+  padding: 1rem;
+  border-radius: 1rem;
+  filter: drop-shadow(1px 1px 2px);
+}
+#temps {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr 1fr;
+  background: #bcebfa;
+  width: 400px;
+}
+#temps>:nth-child(1) {
+  grid-area: 1 / 1 / 2 / 2;
+}
+#temp {
+  font-size: 4rem;
+}
+#temps>:nth-child(2) {
+  grid-area: 1 / 2 / 2 / 3;
+}
+#temps>:nth-child(2) span {
+  font-size: 1.5rem;
+  padding-left: .5rem;
+}
+#temps>:nth-child(3) {
+  grid-area: 2 / 1 / 3 / 2;
+  align-self: end;
+  font-size: 1.2rem;
+}
+#msj {
+  font-size: larger;
+}
+#horas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  font-size: 1.75rem;
+  width: 175px;
+  background-blend-mode: overlay;
+}
+#horas[data="dia"] {
+  background-color: skyblue;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Blue_sky_7.jpg/500px-Blue_sky_7.jpg");
+}
+#horas[data="noche"] {
+  background-color: cadetblue;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Stars_01_%28MK%29.jpg/1024px-Stars_01_%28MK%29.jpg");
+}
+#horas b {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+#horas b::before {
+  display: block;
+  height: 35px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 25px;
+  content: "";
+}
+#horas>div:first-child b::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23323232' d='M11 5V1h2v4zm6.65 2.75l-1.375-1.375l2.8-2.875l1.4 1.425zM19 13v-2h4v2zm-8 10v-4h2v4zM6.35 7.7L3.5 4.925l1.425-1.4L7.75 6.35zm12.7 12.8l-2.775-2.875l1.35-1.35l2.85 2.75zM1 13v-2h4v2zm3.925 7.5l-1.4-1.425l2.8-2.8l.725.675l.725.7zM12 18q-2.5 0-4.25-1.75T6 12t1.75-4.25T12 6t4.25 1.75T18 12t-1.75 4.25T12 18'/%3E%3C/svg%3E");
+}
+#horas>div:last-child b::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23323232' d='M12 21q-3.75 0-6.375-2.625T3 12t2.625-6.375T12 3q.35 0 .688.025t.662.075q-1.025.725-1.638 1.888T11.1 7.5q0 2.25 1.575 3.825T16.5 12.9q1.375 0 2.525-.613T20.9 10.65q.05.325.075.662T21 12q0 3.75-2.625 6.375T12 21'/%3E%3C/svg%3E");
+}
+aside {
+  width: 300px;
+}
+aside>article {
+  display: flex;
+  justify-content: space-between;
+  font-size: smaller;
+  border-top: 1px solid lightgray;
+  padding-block: 1rem;
+  padding-inline: .25rem;
+  align-items: baseline;
+}
+aside>article>:first-child, aside>article .tmp {
+  font-weight: bold;
+}
+aside>article>:last-child {
+  text-align: right;
+}
