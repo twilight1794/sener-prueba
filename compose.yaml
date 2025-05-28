@@ -6,6 +6,7 @@ services:
       MARIADB_ROOT_PASSWORD: contra
     volumes:
       - "./db.sql:/docker-entrypoint-initdb.d/db.sql"
+      - "./mariadb:/var/lib/mysql:Z"
     ports:
       - 3306:3306
   flask:

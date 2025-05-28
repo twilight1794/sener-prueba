@@ -6,21 +6,20 @@ import requests
 import sys
 
 app = Flask(__name__)
-try:
+def maria_cur():
     con = mariadb.connect(
-      user="root",
-      password="contra",
-      host="db",
-      port=3306,
-      database="sener"
+        user="root",
+        password="contra",
+        host="db",
+        port=3306,
+        database="sener"
     )
-    cur = con.cursor()
-except mariadb.Error as e:
-    print(f"Error connecting to MariaDB Platform: {e}")
-    sys.exit(1)
+    return con
 
 @app.route("/datos")
 def datos():
+    con = maria_cur()
+    cur = con.cursor()
     obj = {}
     # Tiempo actual
     q1 = "select a.id, a.nombre, b.tiempo_tipo, b.tiempo_icono, b.temperatura, b.sensacion, b.temp_min, b.temp_max, b.humedad, b.dato_tiempo, b.alba, b.ocaso from ciudad as a inner join tiempo as b on a.id=b.ciudad"
@@ -52,10 +51,13 @@ def datos():
             "temperatura": c2[5],
             "pop": c2[6]
         }
+    con.close()
     return obj
 
 @app.route("/actualizar")
 def actualizar():
+    con = maria_cur()
+    cur = con.cursor()
     # Limpiar
     cur.execute("delete from pronostico")
     con.commit()
@@ -78,4 +80,5 @@ def actualizar():
             print(q2)
             cur.execute(q2)
         con.commit()
+    con.close()
     return "OK"
