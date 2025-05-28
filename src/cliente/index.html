@@ -4,114 +4,80 @@
     <title>Clima</title>
     <link rel="stylesheet" type="text/css" href="estilos.css" />
     <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/c/cc/Twemoji2_1f308.svg" />
+    <script src="index.js"></script>
   </head>
   <body role="application">
     <main>
-      <h1>Ciudad de México</h1>
-      <p id="fecha">Viernes, 26 de mayo de 2026, 6:00 h</p>
+      <h1>—</h1>
+      <p id="fecha">—</p>
       <div>
         <article id="temps">
           <div>
-            <div id="temp">39°C</div>
+            <div id="temp">—°C</div>
           </div>
           <div>
-            <div>Máx <span>41°C</span></div>
-            <div>Mín <span>36°C</span></div>
+            <div>Máx <span id="max">—°C</span></div>
+            <div>Mín <span id="min">—°C</span></div>
           </div>
           <div>
-            <div id="msj">Chubasco intenso</div>
-            <div>Humedad de <span id="hume">20%</span>
-            <div>Sensación de <span id="sensa">45°C</span></div>
+            <div id="msj">—</div>
+            <div>Humedad de <span id="hume">—%</span>
+            <div>Sensación de <span id="sensa">—°C</span></div>
           </div>
         </article>
         <article id="horas">
-          <div><b>Alba</b> <span id="alba">07:13</span></div>
-          <div><b>Ocaso</b> <span id="ocaso">16:29</span></div>
+          <div><b>Alba</b> <span id="alba">—:—</span></div>
+          <div><b>Ocaso</b> <span id="ocaso">—:—</span></div>
         </article>
       </div>
       <article>
-        <h2>Pronóstico</h2>
+        <h2 style="padding-top: 1rem">Pronóstico</h2>
         <div>
-          <article class="tarje clear-sky-d">
-            <b>12:00</b>
-            <span class="p-temp">20°C</span>
-            <span class="p-pop">15%</span>
+          <article class="tarje">
+            <b>—:—</b>
+            <span class="p-temp">—°C</span>
+            <span class="p-pop">—%</span>
           </article>
-          <article class="tarje clear-sky-n">
-            <b>15:00</b>
-            <span class="p-temp">20°C</span>
-            <span class="p-pop">15%</span>
+          <article class="tarje">
+            <b>—:—</b>
+            <span class="p-temp">—°C</span>
+            <span class="p-pop">—%</span>
           </article>
-          <article class="tarje few-clouds-d">
-            <b>18:00</b>
-            <span class="p-temp">20°C</span>
-            <span class="p-pop">15%</span>
+          <article class="tarje">
+            <b>—:—</b>
+            <span class="p-temp">—°C</span>
+            <span class="p-pop">—%</span>
           </article>
-          <article class="tarje few-clouds-n">
-            <b>21:00</b>
-            <span class="p-temp">20°C</span>
-            <span class="p-pop">15%</span>
+          <article class="tarje">
+            <b>—:—</b>
+            <span class="p-temp">—°C</span>
+            <span class="p-pop">—%</span>
           </article>
-          <article class="tarje rain-d">
-            <b>00:00</b>
-            <span class="p-temp">20°C</span>
-            <span class="p-pop">15%</span>
+          <article class="tarje">
+            <b>—:—</b>
+            <span class="p-temp">—°C</span>
+            <span class="p-pop">—%</span>
           </article>
-          <article class="tarje thunderstorm-d">
-            <b>03:00</b>
-            <span class="p-temp">20°C</span>
-            <span class="p-pop">15%</span>
+          <article class="tarje">
+            <b>—:—</b>
+            <span class="p-temp">—°C</span>
+            <span class="p-pop">—%</span>
           </article>
-          <article class="tarje snow-d">
-            <b>06:00</b>
-            <span class="p-temp">20°C</span>
-            <span class="p-pop">15%</span>
+          <article class="tarje">
+            <b>—:—</b>
+            <span class="p-temp">—°C</span>
+            <span class="p-pop">—%</span>
           </article>
-          <article class="tarje mist-d">
-            <b>09:00</b>
-            <span class="p-temp">20°C</span>
-            <span class="p-pop">15%</span>
+          <article class="tarje">
+            <b>—:—</b>
+            <span class="p-temp">—°C</span>
+            <span class="p-pop">—%</span>
           </article>
         </div>
       </article>
     </main>
     <aside>
       <h2>Otras ciudades</h2>
-      <article class="clear-sky-d">
-        <div class="cd">Monterrey</div>
-        <div>
-          <div class="tmp">20°C</div>
-          <div class="dsc">Lluvia ligera</div>
-        </div>
-      </article>
-      <article class="clear-sky-n">
-        <div class="cd">Monterrey</div>
-        <div>
-          <div class="tmp">20°C</div>
-          <div class="dsc">Lluvia ligera</div>
-        </div>
-      </article>
-      <article class="few-clouds-d">
-        <div class="cd">Guadalajara</div>
-        <div>
-          <div class="tmp">20°C</div>
-          <div class="dsc">Lluvia ligera</div>
-        </div>
-      </article>
-      <article class="broken-clouds-d">
-        <div class="cd">Puebla</div>
-        <div>
-          <div class="tmp">20°C</div>
-          <div class="dsc">Lluvia ligera</div>
-        </div>
-      </article>
-      <article class="shower-rain-d">
-        <div class="cd">Querétaro</div>
-        <div>
-          <div class="tmp">20°C</div>
-          <div class="dsc">Lluvia ligera</div>
-        </div>
-      </article>
     </aside>
   </body>
 </html>

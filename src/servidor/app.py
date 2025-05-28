@@ -1,5 +1,6 @@
-from flask import Flask, abort
+from flask import Flask, abort, Response
 
+import json
 import mariadb
 import os
 import requests
@@ -52,7 +53,9 @@ def datos():
             "pop": c2[6]
         }
     con.close()
-    return obj
+    resp = Response(json.dumps(obj, default=str))
+    resp.headers['Access-Control-Allow-Origin']  = "*"
+    return resp
 
 @app.route("/actualizar")
 def actualizar():
