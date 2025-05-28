@@ -52,6 +52,7 @@ function cp(nombre){
             tarjes[i].children[1].textContent = (obj.pronosticos[pronos[i]].temperatura/1000).toFixed(1)+"°C";
             tarjes[i].children[2].textContent = (obj.pronosticos[pronos[i]].pop/10).toFixed(0)+"%";
         }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
         console.error(`${nombre} no encontrado`);
     }

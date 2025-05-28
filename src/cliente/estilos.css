@@ -30,6 +30,7 @@ body {
   gap: 1rem;
   color: #212529;
   padding-top: 2rem;
+  margin-inline: 1rem;
 }
 body>:is(main, aside) {
   background: #fafafa;
@@ -52,6 +53,7 @@ main>:nth-child(3)>article {
   grid-template-rows: 1fr 1fr;
   background: #bcebfa;
   width: 400px;
+  max-width: 100%;
 
   &::after {
     display: block;
@@ -157,10 +159,21 @@ main>:nth-child(3)>article {
     mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21q-3.75 0-6.375-2.625T3 12t2.625-6.375T12 3q.35 0 .688.025t.662.075q-1.025.725-1.638 1.888T11.1 7.5q0 2.25 1.575 3.825T16.5 12.9q1.375 0 2.525-.613T20.9 10.65q.05.325.075.662T21 12q0 3.75-2.625 6.375T12 21'/%3E%3C/svg%3E");
   }
 }
+
+/*Pronósticos*/
+main>article>div {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  overflow: auto;
+  padding: 2px;
+}
+
 .tarje {
   display: inline-flex;
   flex-direction: column;
   width: 120px;
+  min-width: 120px;
   background-color: #d8f4e4;
   border-radius: 1rem;
   filter: drop-shadow(1px 1px 2px);
@@ -261,4 +274,23 @@ aside>article>:first-child, aside>article .tmp {
 }
 aside>article>:last-child {
   text-align: right;
+}
+
+@media (max-width: 880px) {
+  body {
+    flex-direction: column;
+  }
+  aside {
+    align-self: center;
+  }
+}
+@media (max-width: 550px) {
+  main>div {
+    flex-direction: column;
+  }
+  #horas {
+    flex-direction: row;
+    width: auto;
+    justify-content: space-evenly;
+  }
 }
